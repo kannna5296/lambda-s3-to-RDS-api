@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: admin
+  sql:
+    init:
+      mode: always
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  h2:
+    console:
+      enabled: true
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
