@@ -25,14 +25,14 @@ class TaskEntity(
     @JoinColumn(name = "task_id")
     val taskDetail: Set<TaskDetailEntity>? = null
 ) {
-    //DomainEnttiy=>JPAEntity
+    // DomainEnttiy=>JPAEntity
     constructor(task: Task) : this(
         id = task.id,
         taskName = task.taskName.value,
         createdAt = task.createdAt
     )
 
-    //JPAEntity=>DomainEntity
+    // JPAEntity=>DomainEntity
     fun toDomainEntity(): Task {
         return Task(
             id = id,

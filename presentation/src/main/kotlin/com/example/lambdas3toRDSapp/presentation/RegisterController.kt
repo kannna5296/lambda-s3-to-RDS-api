@@ -14,8 +14,7 @@ class RegisterController(
 ) {
 
     @PostMapping("/task")
-    fun register(@RequestBody form: RegisterForm): ResponseEntity<TaskResponse>{
+    fun register(@RequestBody form: RegisterForm): ResponseEntity<TaskResponse> {
         return ResponseEntity.ok(registerService.register(form))
     }
-
 }

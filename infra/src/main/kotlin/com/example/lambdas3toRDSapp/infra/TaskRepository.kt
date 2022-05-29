@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional
 @Repository
 class TaskRepository(
     private val taskRepository: JpaTaskRepository
-): ITaskRepository {
+) : ITaskRepository {
 
     @Transactional
     override fun save(task: Task): Task {

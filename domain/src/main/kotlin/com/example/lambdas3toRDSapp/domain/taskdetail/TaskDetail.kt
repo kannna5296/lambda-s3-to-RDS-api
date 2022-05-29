@@ -9,4 +9,3 @@ class TaskDetail(
     content: Content,
     createdAt: LocalDateTime
 )
-

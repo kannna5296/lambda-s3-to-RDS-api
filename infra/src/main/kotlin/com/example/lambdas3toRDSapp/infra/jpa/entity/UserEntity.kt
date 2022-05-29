@@ -17,7 +17,7 @@ class UserEntity(
     val id: Int? = null,
     val name: String,
 
-    //FetchはLazy
+    // FetchはLazy
     @OneToMany(cascade = [CascadeType.ALL])
     @JoinColumn(name = "user_id")
     val taskDetail: Set<TaskDetailEntity>? = null
