@@ -43,6 +43,8 @@ subprojects {
 
         testImplementation("org.springframework.boot:spring-boot-starter-test")
         testImplementation(kotlin("test"))
+
+        implementation("com.amazonaws:aws-java-sdk-s3:1.12.231")
     }
 }
 
