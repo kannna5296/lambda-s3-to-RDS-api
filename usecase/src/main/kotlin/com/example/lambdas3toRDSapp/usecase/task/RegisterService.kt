@@ -33,13 +33,16 @@ class RegisterService(
         val s3 = AmazonS3ClientBuilder.standard().withRegion(Regions.AP_NORTHEAST_1).build();
         val expiration = Date()
         var expirationInMs = expiration.time
+        println("Current Time :${expiration.time}")
         expirationInMs += (1000 * 60).toLong()
         expiration.time = expirationInMs
+        println("Expiration Time:${expiration.time}")
 
         val request = GeneratePresignedUrlRequest("container", "key")
             .withMethod(HttpMethod.PUT)
             .withExpiration(expiration)
 
         val url = s3.generatePresignedUrl(request).toURI().toString()
+        println("PresignedUrl:$url")
     }
 }
