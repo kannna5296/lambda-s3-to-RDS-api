@@ -17,7 +17,7 @@ class RegisterService(
 ) {
 
     fun register(form: RegisterForm): TaskResponse {
-        getPreSignedUrl()
+        val preSignedUrl = getPreSignedUrl()
 
         val task = Task(
             taskName = TaskName(form.taskName),
@@ -27,10 +27,13 @@ class RegisterService(
         return TaskResponse()
     }
 
-    private fun getPreSignedUrl(
-    ) {
+    private fun getPreSignedUrl(): String{
 
+        //S3クライアント生成
+        //TODO シングルとんな感じにしたい
         val s3 = AmazonS3ClientBuilder.standard().withRegion(Regions.AP_NORTHEAST_1).build();
+
+        // 有効期限設定
         val expiration = Date()
         var expirationInMs = expiration.time
         println("Current Time :${expiration.time}")
@@ -38,11 +41,13 @@ class RegisterService(
         expiration.time = expirationInMs
         println("Expiration Time:${expiration.time}")
 
-        val request = GeneratePresignedUrlRequest("container", "key")
+        // 生成
+        val request = GeneratePresignedUrlRequest("my-test-s3-masahiro", "test.csv")
             .withMethod(HttpMethod.PUT)
             .withExpiration(expiration)
-
         val url = s3.generatePresignedUrl(request).toURI().toString()
+
         println("PresignedUrl:$url")
+        return url
     }
 }
