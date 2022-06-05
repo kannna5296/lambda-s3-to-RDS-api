@@ -30,7 +30,8 @@ class StorageUtil(
         println("Expiration Time:${expiration.time}")
 
         // 生成
-        val request = GeneratePresignedUrlRequest("my-test-s3-masahiro", "test.csv")
+        //TODO 設定ファイルから読ませる
+        val request = GeneratePresignedUrlRequest("", "")
             .withMethod(HttpMethod.PUT)
             .withExpiration(expiration)
         val url = s3.generatePresignedUrl(request).toURI().toString()
