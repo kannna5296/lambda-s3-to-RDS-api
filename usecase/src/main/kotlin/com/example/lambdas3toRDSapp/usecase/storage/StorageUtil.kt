@@ -17,10 +17,6 @@ class StorageUtil(
 
     fun getPreSignedUrl(): String{
 
-        //S3クライアント生成
-        //TODO シングルとんな感じにしたい
-        val s3 = AmazonS3ClientBuilder.standard().withRegion(Regions.AP_NORTHEAST_1).build();
-
         // 有効期限設定
         val expiration = Date()
         var expirationInMs = expiration.time
@@ -34,6 +30,7 @@ class StorageUtil(
         val request = GeneratePresignedUrlRequest("", "")
             .withMethod(HttpMethod.PUT)
             .withExpiration(expiration)
+
         val url = s3.generatePresignedUrl(request).toURI().toString()
 
         println("PresignedUrl:$url")
