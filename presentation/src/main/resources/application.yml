@@ -22,3 +22,5 @@ s3:
   endPoint: http://localhost:8080
   bucketName: local-bucket
   https: false
+  connectionTimeout: 10000
+  readTimeout: 10000

@@ -26,6 +26,12 @@ class StorageConfig {
     @Value("\${s3.https}")
     val https: Boolean = false
 
+    @Value("\${s3.connectionTimeout}")
+    val connectionTimeout: Int = 0
+
+    @Value("\${s3.readTimeout}")
+    val readTimeout: Int = 0
+
     @Bean
     fun getClient(): AmazonS3 {
 
