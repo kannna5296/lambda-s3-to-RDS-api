@@ -1,4 +1,4 @@
-package com.example.lambdas3toRDSapp.infra.jpa.entity
+package com.example.lambdas3toRDSapp.infra.db.jpa.entity
 
 import javax.persistence.CascadeType
 import javax.persistence.Entity

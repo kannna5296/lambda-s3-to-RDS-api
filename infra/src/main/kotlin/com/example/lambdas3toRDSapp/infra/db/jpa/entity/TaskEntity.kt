@@ -1,4 +1,4 @@
-package com.example.lambdas3toRDSapp.infra.jpa.entity
+package com.example.lambdas3toRDSapp.infra.db.jpa.entity
 
 import com.example.lambdas3toRDSapp.domain.task.Task
 import com.example.lambdas3toRDSapp.domain.task.TaskName

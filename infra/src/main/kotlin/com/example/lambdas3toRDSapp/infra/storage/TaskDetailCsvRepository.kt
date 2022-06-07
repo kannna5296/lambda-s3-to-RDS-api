@@ -1,21 +1,19 @@
-package com.example.lambdas3toRDSapp.usecase.storage
+package com.example.lambdas3toRDSapp.infra.storage
 
 import com.amazonaws.HttpMethod
-import com.amazonaws.regions.Regions
 import com.amazonaws.services.s3.AmazonS3
-import com.amazonaws.services.s3.AmazonS3ClientBuilder
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest
-import org.springframework.stereotype.Service
+import com.example.lambdas3toRDSapp.domain.taskdetailcsv.ITaskDetailCsvRepository
+import com.example.lambdas3toRDSapp.domain.taskdetailcsv.PreSingedUrlForUpload
+import org.springframework.stereotype.Repository
 import java.util.Date
 
-//TODO DDD*CleanArchitectureにおける外部接続ファイルの持たせ方
-//TODO infra層かも？
-@Service
-class StorageService(
+@Repository
+class TaskDetailCsvRepository(
     private val s3: AmazonS3
-) {
+) : ITaskDetailCsvRepository {
 
-    fun getPreSignedUrl(): String{
+    override fun get(key: String): PreSingedUrlForUpload{
 
         // 有効期限設定
         val expiration = Date()
@@ -34,6 +32,6 @@ class StorageService(
         val url = s3.generatePresignedUrl(request).toURI().toString()
 
         println("PresignedUrl:$url")
-        return url
+        return PreSingedUrlForUpload(url)
     }
 }
