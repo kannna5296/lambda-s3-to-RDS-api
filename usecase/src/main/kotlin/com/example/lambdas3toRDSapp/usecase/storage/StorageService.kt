@@ -8,10 +8,10 @@ import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest
 import org.springframework.stereotype.Service
 import java.util.Date
 
-@Service
 //TODO DDD*CleanArchitectureにおける外部接続ファイルの持たせ方
 //TODO infra層かも？
-class StorageUtil(
+@Service
+class StorageService(
     private val s3: AmazonS3
 ) {
 
