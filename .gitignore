@@ -8,7 +8,8 @@ presentation/build/
 infra/build/
 
 #minioのファイルどこまで残すのか
-#docker/minio/data/
+docker/minio/data/
+docker/minio/config/
 
 # Ignore Gradle GUI config
 gradle-app.setting
