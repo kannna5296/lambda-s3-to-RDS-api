@@ -19,7 +19,7 @@ logging:
 
 s3:
   region: ap-northeast-1
-  endPoint: http://localhost:8080
+  endPoint: 127.0.0.1:9000
   bucketName: local-bucket
   https: false
   connectionTimeout: 10000

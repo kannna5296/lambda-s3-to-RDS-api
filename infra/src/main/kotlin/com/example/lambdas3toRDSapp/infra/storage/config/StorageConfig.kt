@@ -52,10 +52,8 @@ class StorageConfig {
             .withEndpointConfiguration(endpointConfiguration)
             .build();
 
-        if(!client.doesBucketExistV2(bucketName)) {
-            throw Exception("S3バケット[$bucketName]がありません")
-        }
-
+        println(endpointConfiguration.serviceEndpoint)
+        println(endpointConfiguration.signingRegion)
         println(client)
         return client
     }
