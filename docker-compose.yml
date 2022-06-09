@@ -13,7 +13,7 @@ services:
       mkdir -p /data/.minio.sys/buckets;
       cp -r /policies/* /data/.minio.sys/;
       cp -r /export/* /data/;
-      /opt/bin/minio server /data;
+      /opt/bin/minio server /data --address :9999 --console-address :9001
       "
     volumes:
       - ./docker/minio/data:/data
