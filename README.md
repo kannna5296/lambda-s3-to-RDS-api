@@ -5,7 +5,7 @@ Kotlinとaws-sdk-for-javaでpresignedUrl取得する処理を書く
 ## ローカルのminioでのファイルシェア用URL
 こういうのをKotlinで取得したい（先に答えを求めておく） <br>
 これがpresignedUrl？？ <br>
-http://172.27.0.2:9999/localbucket/test?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=PUEX42RFJNEKISG7B067%2F20220609%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220609T140204Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiJQVUVYNDJSRkpORUtJU0c3QjA2NyIsImV4cCI6MTY1NDc4Njc2NywicGFyZW50IjoibWluaW9hZG1pbnVzZXIifQ.pL8jDMOgcbIeniiozfsMJCrEfA6_fqB84l6qc2ZA0TqVaudLOUFj5xpsQgjlbpuP8YbDkEnUUJcWbbg0j1fqcQ&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=7500145294dc044021455fd0e2f6a572f42e0f54409130d4c5af5acccc61c2fe
+http://172.28.0.2:9000/localbucket/test?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=M89F8LGVLK401DSJE30M%2F20220609%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220609T140918Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiJNODlGOExHVkxLNDAxRFNKRTMwTSIsImV4cCI6MTY1NDc4Njk2NiwicGFyZW50IjoibWluaW9hZG1pbnVzZXIifQ.lIdWvK3zXj1i1dNUtK-ssvOn7PRoBiLkDA16wqn3JMNJq7_PQSfnYVoAdx4CyXS3nLA8YNmDUBhHHv0uL1Kk_w&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=952f9c26252c177b1c2edf0613cf7fcb76b94b4eb13e63447b4e255d4816918e
 
 取得方法
 minioのコンソールでオブジェクトをチェック > Share > 下記画面から確認可能
