@@ -7,7 +7,7 @@ usecase/build/
 presentation/build/
 infra/build/
 
-docker/minio/data
+docker/minio/data/
 
 # Ignore Gradle GUI config
 gradle-app.setting
