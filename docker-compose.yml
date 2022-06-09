@@ -13,7 +13,7 @@ services:
       mkdir -p /data/.minio.sys/buckets;
       cp -r /policies/* /data/.minio.sys/;
       cp -r /export/* /data/;
-      /usr/bin/minio server /data;
+      /opt/bin/minio server /data;
       "
     volumes:
       - ./docker/minio/data:/data
@@ -23,7 +23,3 @@ services:
     ports:
       - '9000:9000'
       - '9001:9001'
-  createbuckets:
-    image: minio/mc:latest
-    depends_on:
-      - minio
