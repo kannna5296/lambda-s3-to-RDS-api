@@ -4,5 +4,5 @@ package com.example.lambdas3toRDSapp.domain.taskdetailcsv
 // ユースケースによる？？？
 interface ITaskDetailCsvRepository {
     fun prepareForSecureUpload(dirName: String, fileName: String): String
-    fun upload()
+    fun upload(dirName: String, fileName: String)
 }

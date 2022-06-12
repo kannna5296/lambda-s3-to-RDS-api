@@ -35,9 +35,9 @@ class TaskDetailCsvRepository(
         return url
     }
 
-    override fun upload() {
+    override fun upload(dirName: String, fileName: String) {
         // 適当なファイル
         val file = File("/etc/hosts")
-        s3.putObject(PutObjectRequest("localbucket", "hosts", file))
+        s3.putObject(PutObjectRequest(dirName, fileName, file))
     }
 }
