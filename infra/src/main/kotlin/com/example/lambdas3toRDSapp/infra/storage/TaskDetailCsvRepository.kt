@@ -14,9 +14,9 @@ class TaskDetailCsvRepository(
     private val s3: AmazonS3
 ) : ITaskDetailCsvRepository {
 
-    override fun prepareForSecureUpload(dirName: String, fileName: String): String{
+    override fun prepareForSecureUpload(dirName: String, fileName: String): String {
 
-        //有効期限設定
+        // 有効期限設定
         val expiration = Date()
         var expirationInMs = expiration.time
         println("Current Time :${expiration.time}")
@@ -25,7 +25,7 @@ class TaskDetailCsvRepository(
         println("Expiration Time:${expiration.time}")
 
         // 生成
-        val request = GeneratePresignedUrlRequest(dirName,fileName)
+        val request = GeneratePresignedUrlRequest(dirName, fileName)
             .withMethod(HttpMethod.PUT)
             .withExpiration(expiration)
 
@@ -35,9 +35,9 @@ class TaskDetailCsvRepository(
         return url
     }
 
-    override fun upload(){
-        //適当なファイル
+    override fun upload() {
+        // 適当なファイル
         val file = File("/etc/hosts")
-        s3.putObject(PutObjectRequest("localbucket","hosts", file))
+        s3.putObject(PutObjectRequest("localbucket", "hosts", file))
     }
 }

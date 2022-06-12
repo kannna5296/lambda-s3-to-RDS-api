@@ -1,7 +1,6 @@
 package com.example.lambdas3toRDSapp.infra.storage.config
 
 import com.amazonaws.ClientConfiguration
-import com.amazonaws.Protocol
 import com.amazonaws.auth.AWSStaticCredentialsProvider
 import com.amazonaws.auth.BasicAWSCredentials
 import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration
@@ -38,7 +37,7 @@ class StorageConfig {
     @Bean
     fun getClient(): AmazonS3 {
 
-        //設定ファイルから
+        // 設定ファイルから
         val credentials = BasicAWSCredentials(accessKey, secretKey)
         val endpointConfiguration = EndpointConfiguration(endPoint, region)
         val clientConfiguration = ClientConfiguration()
@@ -47,12 +46,12 @@ class StorageConfig {
 
         val client = AmazonS3ClientBuilder.standard()
             .withEndpointConfiguration(endpointConfiguration)
-            .withPathStyleAccessEnabled(true) //TODO これ何？
+            .withPathStyleAccessEnabled(true) // TODO これ何？
             .withClientConfiguration(clientConfiguration)
             .withCredentials(AWSStaticCredentialsProvider(credentials))
-            .build();
+            .build()
 
-        //設定値から取得したBucketが存在するかチェック
+        // 設定値から取得したBucketが存在するかチェック
         if (!client.doesBucketExistV2(bucketName)) {
             throw Exception("bucketが存在しません")
         }

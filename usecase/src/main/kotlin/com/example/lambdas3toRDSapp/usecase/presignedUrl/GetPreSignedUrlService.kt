@@ -8,12 +8,12 @@ class GetPreSignedUrlService(
     private val preSignedUrlRepository: ITaskDetailCsvRepository
 ) {
 
-    //フォルダ名
+    // フォルダ名
     private val dirName = "localhost"
 
     fun get(form: GetPreSingedUrlForm): GetPreSignedUrlResponse {
         return GetPreSignedUrlResponse(
-            preSignedUrlRepository.prepareForSecureUpload(dirName,form.fileName)
+            preSignedUrlRepository.prepareForSecureUpload(dirName, form.fileName)
         )
     }
 }
