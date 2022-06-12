@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  #https://qiita:com/reflet/items/3e0f07bc9d64314515c1: 参考
+  minio:
+    image: 'minio/minio'
+    container_name: minio
+    environment:
+      MINIO_ROOT_USER: minioadminuser
+      MINIO_ROOT_PASSWORD: minioadminpassword
+    entrypoint: sh
+    command: -c "
+      mkdir -p /data/.minio.sys/buckets;
+      cp -r /policies/* /data/.minio.sys/;
+      cp -r /export/* /data/;
+      /opt/bin/minio server /data --address :9000 --console-address :9001
+      "
+    volumes:
+      - ./docker/minio/data:/data
+      - ./docker/minio/export:/export
+      - ./docker/minio/config:/root/.minio
+      - ./docker/minio/policies:/policies
+    ports:
+      - '9000:9000'
+      - '9001:9001'

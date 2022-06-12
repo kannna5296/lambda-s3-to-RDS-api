@@ -8,9 +8,8 @@ import java.time.LocalDateTime
 
 @Service
 class RegisterService(
-    private val taskRepository: ITaskRepository
+    private val taskRepository: ITaskRepository,
 ) {
-
     fun register(form: RegisterForm): TaskResponse {
         val task = Task(
             taskName = TaskName(form.taskName),

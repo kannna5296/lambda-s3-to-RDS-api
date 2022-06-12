@@ -1,4 +1,4 @@
-package com.example.lambdas3toRDSapp.presentation
+package com.example.lambdas3toRDSapp.presentation.task
 
 import com.example.lambdas3toRDSapp.usecase.task.RegisterForm
 import com.example.lambdas3toRDSapp.usecase.task.RegisterService

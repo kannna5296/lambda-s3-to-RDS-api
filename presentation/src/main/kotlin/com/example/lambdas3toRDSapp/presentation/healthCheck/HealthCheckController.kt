@@ -1,4 +1,4 @@
-package com.example.lambdas3toRDSapp.presentation
+package com.example.lambdas3toRDSapp.presentation.healthCheck
 
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping

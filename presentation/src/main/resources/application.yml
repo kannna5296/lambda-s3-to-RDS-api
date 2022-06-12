@@ -16,3 +16,14 @@ logging:
     org:
       hibernate:
         SQL: debug
+
+s3:
+  #minioのコンソールログインと同じ
+  credential:
+    accessKey: minioadminuser
+    secretKey: minioadminpassword
+  region: ap-northeast-1
+  endPoint: http://localhost:9000
+  bucketName: localbucket
+  connectionTimeout: 10000
+  readTimeout: 10000
