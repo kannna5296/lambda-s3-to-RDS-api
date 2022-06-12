@@ -56,7 +56,7 @@ class StorageConfig {
             .withCredentials(AWSStaticCredentialsProvider(credentials))
             .build();
 
-        //Bucket存在するかチェック
+        //設定値から取得したBucketが存在するかチェック
         if (!client.doesBucketExistV2(bucketName)) {
             throw Exception("bucketが存在しません")
         }
