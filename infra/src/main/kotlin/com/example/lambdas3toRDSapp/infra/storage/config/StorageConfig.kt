@@ -29,9 +29,6 @@ class StorageConfig {
     @Value("\${s3.bucketName}")
     val bucketName: String = ""
 
-    @Value("\${s3.https}")
-    val https: Boolean = false
-
     @Value("\${s3.connectionTimeout}")
     val connectionTimeout: Int = 0
 
@@ -45,7 +42,6 @@ class StorageConfig {
         val credentials = BasicAWSCredentials(accessKey, secretKey)
         val endpointConfiguration = EndpointConfiguration(endPoint, region)
         val clientConfiguration = ClientConfiguration()
-        clientConfiguration.protocol = if(https) Protocol.HTTPS else Protocol.HTTP
         clientConfiguration.connectionTimeout = connectionTimeout
         clientConfiguration.requestTimeout = readTimeout
 
