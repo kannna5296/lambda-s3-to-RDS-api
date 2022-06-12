@@ -14,6 +14,12 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class StorageConfig {
 
+    @Value("\${s3.credential.accessKey}")
+    val accessKey: String = ""
+
+    @Value("\${s3.credential.secretKey}")
+    val secretKey: String = ""
+
     @Value("\${s3.region}")
     val region: String? = ""
 
@@ -36,25 +42,25 @@ class StorageConfig {
     fun getClient(): AmazonS3 {
 
         //設定ファイルから
-        val credentials = BasicAWSCredentials("access_key", "secret_key")
-
+        val credentials = BasicAWSCredentials(accessKey, secretKey)
         val endpointConfiguration = EndpointConfiguration(endPoint, region)
-
         val clientConfiguration = ClientConfiguration()
         clientConfiguration.protocol = if(https) Protocol.HTTPS else Protocol.HTTP
-        //設定ファイルから
-        clientConfiguration.connectionTimeout = 10000
+        clientConfiguration.connectionTimeout = connectionTimeout
+        clientConfiguration.requestTimeout = readTimeout
 
         val client = AmazonS3ClientBuilder.standard()
-            //認証情報
-            .withCredentials(AWSStaticCredentialsProvider(credentials))
-            //S3エンドポイント
             .withEndpointConfiguration(endpointConfiguration)
+            .withPathStyleAccessEnabled(true) //TODO これ何？
+            .withClientConfiguration(clientConfiguration)
+            .withCredentials(AWSStaticCredentialsProvider(credentials))
             .build();
 
-        println(endpointConfiguration.serviceEndpoint)
-        println(endpointConfiguration.signingRegion)
-        println(client)
+        //Bucket存在するかチェック
+        if (!client.doesBucketExistV2(bucketName)) {
+            throw Exception("bucketが存在しません")
+        }
+
         return client
     }
 }
