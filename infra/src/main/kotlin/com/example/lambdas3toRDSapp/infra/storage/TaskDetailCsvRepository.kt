@@ -34,10 +34,4 @@ class TaskDetailCsvRepository(
         println("PresignedUrl:$url")
         return url
     }
-
-    override fun upload(dirName: String, fileName: String) {
-        // 適当なファイル
-        val file = File("/etc/hosts")
-        s3.putObject(PutObjectRequest(dirName, fileName, file))
-    }
 }
